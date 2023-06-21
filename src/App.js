@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Tweet from './Tweet';
-import { tweetsData } from "./mockData";
-
 
 const App = () => {
   const [tweets, setTweets] = useState([]);
@@ -10,12 +8,17 @@ const App = () => {
   const [endDate, setEndDate] = useState('');
   const [likedTweets, setLikedTweets] = useState([]);
 
- useEffect(() => {
-  setTweets([tweetsData]);
-  setFilteredTweets([tweetsData]);
-}, []);
-
-
+  useEffect(() => {
+    fetch('http://www.mocky.io/v2/5d1ef97d310000552febe99d')
+      .then((response) => response.json())
+      .then((data) => {
+        setTweets(data);
+        setFilteredTweets(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching tweets:', error);
+      });
+  }, []);
 
   const handleDateFilter = () => {
     setFilteredTweets(
