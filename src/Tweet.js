@@ -8,19 +8,17 @@ const Tweet = ({ tweet, handleLike, isLiked }) => {
   };
 
   return (
-    <li className="border p-4">
+    <li className="list-group-item">
       <p>{text}</p>
       {imageUrl && (
         <div className="mt-2">
-          <img src={imageUrl} alt="Tweet" className="w-32 h-auto" />
+          <img src={imageUrl} alt="Tweet" className="w-100" />
         </div>
       )}
-      <div className="flex items-center mt-2">
+      <div className="d-flex align-items-center mt-2">
         <button
           onClick={handleLikeClick}
-          className={`p-2 bg-blue-500 text-white rounded ${
-            isLiked ? 'bg-gray-500' : ''
-          }`}
+          className={`btn btn-primary btn-sm ${isLiked ? 'disabled' : ''}`}
         >
           {isLiked ? 'Unlike' : 'Like'}
         </button>
@@ -28,12 +26,12 @@ const Tweet = ({ tweet, handleLike, isLiked }) => {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 bg-blue-500 text-white rounded ml-2"
+          className="btn btn-primary btn-sm ml-2"
         >
           Go to original tweet
         </a>
       </div>
-      <p className="mt-2 text-sm text-gray-500">{publishedDate}</p>
+      <p className="mt-2 text-muted">{publishedDate}</p>
     </li>
   );
 };

@@ -42,32 +42,40 @@ const App = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container py-4">
       <h1 className="text-2xl font-bold mb-4">Twitter Timeline</h1>
-      <div className="flex mb-4">
-        <input
-          type="date"
-          value={startDate}
-          onChange={(e) => setStartDate(e.target.value)}
-          className="p-2 mr-2 border border-gray-400"
-        />
-        <input
-          type="date"
-          value={endDate}
-          onChange={(e) => setEndDate(e.target.value)}
-          className="p-2 mr-2 border border-gray-400"
-        />
-        <button
-          onClick={handleDateFilter}
-          className="p-2 bg-blue-500 text-white rounded"
-        >
-          Filter
-        </button>
+      <div className="mb-4">
+        <div className="row">
+          <div className="col-md-3">
+            <input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              className="form-control mb-2"
+            />
+          </div>
+          <div className="col-md-3">
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="form-control mb-2"
+            />
+          </div>
+          <div className="col-md-3">
+            <button
+              onClick={handleDateFilter}
+              className="btn btn-primary mb-2"
+            >
+              Filter
+            </button>
+          </div>
+        </div>
       </div>
       {filteredTweets.length === 0 ? (
         <p>No tweets found.</p>
       ) : (
-        <ul className="space-y-4">
+        <ul className="list-group">
           {filteredTweets.map((tweet) => (
             <Tweet
               key={tweet._id}
