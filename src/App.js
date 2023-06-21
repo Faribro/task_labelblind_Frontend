@@ -9,7 +9,7 @@ const App = () => {
   const [likedTweets, setLikedTweets] = useState([]);
 
   useEffect(() => {
-    fetch('http://www.mocky.io/v2/5d1ef97d310000552febe99d')
+    fetch('https://www.mocky.io/v2/5d1ef97d310000552febe99d')
       .then((response) => response.json())
       .then((data) => {
         setTweets(data);
